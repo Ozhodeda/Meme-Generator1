@@ -1,31 +1,6 @@
-'use strict'
 
-let gCounterImages = 1
-var gImgs = [
-    { id: 1, url: `meme-imgs/${gCounterImages++}.jpg`, keywords: ['funny', 'celeb'] },
-    { id: 2, url: `meme-imgs/${gCounterImages++}.jpg`, keywords: ['cute', 'dog', 'animal'] },
-    { id: 3, url: `meme-imgs/${gCounterImages++}.jpg`, keywords: ['cute', 'dog', 'baby', 'animal'] },
-    { id: 4, url: `meme-imgs/${gCounterImages++}.jpg`, keywords: ['lazy', 'cat', 'animal'] },
-    { id: 5, url: `meme-imgs/${gCounterImages++}.jpg`, keywords: ['funny', 'baby'] },
-    { id: 6, url: `meme-imgs/${gCounterImages++}.jpg`, keywords: ['funny', 'awkward'] },
-    { id: 7, url: `meme-imgs/${gCounterImages++}.jpg`, keywords: ['funny', 'baby'] },
-    { id: 8, url: `meme-imgs/${gCounterImages++}.jpg`, keywords: ['funny', 'celeb', 'happy'] },
-    { id: 9, url: `meme-imgs/${gCounterImages++}.jpg`, keywords: ['baby', 'funny', 'cute'] },
-    { id: 10, url: `meme-imgs/${gCounterImages++}.jpg`, keywords: ['funny', 'caleb'] },
-    { id: 11, url: `meme-imgs/${gCounterImages++}.jpg`, keywords: ['player', 'kiss', 'happy'] },
-    { id: 12, url: `meme-imgs/${gCounterImages++}.jpg`, keywords: ['caleb', 'old man'] },
-    { id: 13, url: `meme-imgs/${gCounterImages++}.jpg`, keywords: ['caleb', 'actor'] },
-    { id: 14, url: `meme-imgs/${gCounterImages++}.jpg`, keywords: ['actor', 'serious'] },
-    { id: 15, url: `meme-imgs/${gCounterImages++}.jpg`, keywords: ['actor', 'famous'] },
-    { id: 16, url: `meme-imgs/${gCounterImages++}.jpg`, keywords: ['funny', 'old man', 'happy'] },
-    { id: 17, url: `meme-imgs/${gCounterImages++}.jpg`, keywords: ['serious', 'famous'] },
-    { id: 18, url: `meme-imgs/${gCounterImages++}.jpg`, keywords: [] },
-    { id: 19, url: `meme-imgs/${gCounterImages++}.jpg`, keywords: [] },
-    { id: 20, url: `meme-imgs/${gCounterImages++}.jpg`, keywords: [] },
-    { id: 21, url: `meme-imgs/${gCounterImages++}.jpg`, keywords: [] },
-]
 
-var gKeywords = { 'happy': 12, 'funny puk': 1 }
+
 var gMeme;
 
 function createMeme(imgId) {
@@ -37,15 +12,14 @@ function createMeme(imgId) {
             align: 'center',
             color: 'white',
             font: 'Impact',
-            size: 20,
-            underline: false,
+             size: 20,
+           
         },{
             txt: 'second line',
             align: 'center',
             color: 'white',
             font: 'Impact',
             size: 20,
-            underline: false
         }
     ], stickers:[]
         
@@ -60,7 +34,6 @@ function addLine() {
         color: 'black',
         strokeColor: 'white',
         font: 'Impact',
-        underline: false
     })
     if (gMeme.selectedLineIdx <= 1) gMeme.selectedLineIdx = 2
     else gMeme.selectedLineIdx++
@@ -94,14 +67,15 @@ function changeAlign(align) {
     gMeme.lines[gMeme.selectedLineIdx].align = align
 }
 
-function changeFontSize(diff, lineIdx) {
-    gMeme.lines[lineIdx].size += diff
-    gMeme.lines[lineIdx].posY -= diff / 2
+function changeFontSize(diff) {
+    gMeme.lines[gMeme.selectedLineIdx].size += diff
+  }
+
+function changeFont(font) {
+    const line = getSelectedLine()
+    line.font = font
 }
 
-function changeFont(font, lineIdx) {
-    gMeme.lines[lineIdx].font = font
-}
 
 function changeFontColor(color, lineIdx) {
     gMeme.lines[lineIdx].color = color;
@@ -116,11 +90,6 @@ function changeFontColor(color, lineIdx) {
 }
 
 
-function getImgs() {
-    return gImgs
-}
-
 function getMeme() {
     return gMeme
 }
-

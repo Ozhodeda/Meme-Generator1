@@ -14,7 +14,10 @@ function renderImages(){
         <img src="${img.url}" onclick="onClickImg(${img.id})">
         </div>`
     )
-    setElHtml('main-gallery', strHtml)
+    setElHtml('gallery', strHtml)
 }
 
-
+function onSetFilterBy(filterBy) {
+    filterBy = setImgFilter(filterBy)
+    renderImages()
+}

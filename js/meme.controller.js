@@ -37,7 +37,7 @@ function addListeners() {
     isLineClick(event)
   })
   document.querySelector('.font-family').addEventListener('change', (event) => {
-    onFontChange(event.value)
+    onFontChange(event.target)
   })
   document.addEventListener('keydown', (event) => {
     if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
@@ -190,11 +190,12 @@ function isCanvasClick(clickedPos) {
   return false
 }
 
+
 function drawText(line, isSelected) {
   gCtx.lineWidth = 3
   gCtx.strokeStyle = 'black'
-  gCtx.textBaseline = 'middle'
   gCtx.textAlign = line.align
+  gCtx.textBaseline = 'middle'
   const textHeight = 30
   const padding = 5
 
@@ -203,11 +204,18 @@ function drawText(line, isSelected) {
 
   if (isSelected) {
     let x = line.x
-    if (line.align === 'center') x = gElCanvas.width / 2 - textWidth / 2
-    else if (line.align === 'right') x = gElCanvas.width / 2 - textWidth
-
+    if (line.align === 'center') {
+      x = gElCanvas.width / 2 - textWidth / 2
+    } else if (line.align === 'right') {
+      x = gElCanvas.width / 2 - textWidth
+    }
     gCtx.beginPath()
-    gCtx.rect(x = padding, line.y - (textHeight + padding), textWidth + (2 * padding), textHeight + 2 * padding + 10)
+    gCtx.rect(
+      x - padding,
+      line.y - textHeight + padding,
+      textWidth + 2 * padding,
+      textHeight + 2 * padding + 10
+    )
     gCtx.strokeStyle = 'white'
     gCtx.lineWidth = 1
     gCtx.stroke()
@@ -220,6 +228,7 @@ function drawText(line, isSelected) {
     gCtx.fillStyle = line.color
     drawUnderline(line)
   }
+
   gCtx.strokeText(line.txt, line.x, line.y)
   gCtx.fillText(line.txt, line.x, line.y)
 }
@@ -278,9 +287,7 @@ function onSwitchLine() {
 }
 
 function onChangeSize(diff) {
-  var line = getSelectedLine()
-  if (!line) return alert('please choose a line')
-  changeFontSize(diff, getSelectedLineIdx())
+  changeFontSize(diff)
   renderMeme()
 }
 
@@ -289,10 +296,8 @@ function onAlign(align) {
   renderMeme()
 }
 
-function onFontChange(font) {
-  var line = getSelectedLine()
-  if (!line) return alert('please choose a line')
-  changeFont(font, getSelectedLineIdx())
+function onFontChange({ value }) {
+  changeFont(value)
   renderMeme()
 }
 

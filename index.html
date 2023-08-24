@@ -16,67 +16,93 @@
         <nav class="main-nav-container">
             <ul class="main-nav flex clean-list">
                 <li><a href="#" onclick="onClickGallery()">Gallery</a></li>
+                <li><a href="#" onclick="onMyMemes()">My-Memes</a></li>
                 <li><a href="#">About</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="main-gallery flex">
-        <h3>My-Gallery</h3>
-    </section>
-    <div class="memes-area flex space-around">
-        <section class="canvas-container">
-            <h3>My-Meme</h3>
-            <canvas width="200" height="200"></canvas>
+    <main class="main-container">
+        <section class="main-gallery">
+            <div class="gallery-header flex ">
+                <h3>My-Gallery</h3>
+                <form class="form">
+                    <input type="search" placeholder="Search" class="search" list="keywordsList"
+                        oninput="onSetFilterBy({gKeywords: this.value})" />
+                    <datalist id="keywordsList" class="keywordsList"></datalist>
+                    <button type="button" class="btn-search">
+                        <i class="fa-solid fa-magnifying-glass fa-xl" style="color: rgb(207, 119, 5)"></i>
+                    </button>
+                </form>
+                <span class="filter-words">Funny Animal Man Baby Cute Caleb</span>
+            </div>
+            <div class="gallery flex"></div>
+        </section>
+        <div class="memes-area flex space-around">
+            <section class="canvas-container">
+                <h3>My-Meme</h3>
+                <canvas width="200" height="200"></canvas>
+            </section>
+
+            <section class="tools-container">
+                <h3> My-Tools</h3>
+
+                <input type="text" placeholder="write something" id="txt-input" oninput="onChangeText(this.value)">
+
+                <div class="family-container margin">
+                    <select id="font-family" class="font-family" onchange="onFontChange(this.value)">
+                        <option value="impact">Impact</option>
+                        <option value="Segoe UI">Segoe UI</option>
+                        <option value="verdana">Verdana</option>
+                        <option value="Trebuchet MS">Trebuchet MS</option>
+                        <option value="times new roman">Times New Roman</option>
+                        <option value="comic sans ms">Comic Sans MS</option>
+                    </select>
+
+                    <div class="line-container margin">
+                        <button onclick="onAddLine()" title='plus line'>
+                            <i class="fa-solid fa-plus" style="color: #1b0cf0;"></i>
+                        </button>
+                        <button onclick="onDeleteLine()" title='Delate line'>
+                            <i class="fa-solid fa-trash-can" style="color: #da0303;"></i>
+                        </button>
+                        <button onclick="onSwitchLine()" title='switch line'>
+                            <i class="fa-solid fa-arrows-up-down" style="color: #00df86;"></i>
+                        </button>
+                    </div>
+
+                    <div class="font-container margin">
+                        <button onclick="onChangeSize(1)" title='plus size' class="line-size">A+</button>
+                        <button onclick="onChangeSize(-1)" title='minus line' class="line-size">A-</button>
+                        <button onclick="onAlign('left')" title='align txt left'><i class="fa-solid fa-align-left"
+                                style="color: #f5f907;"></i></button>
+                        <button onclick="onAlign('center')" title='align txt center'><i class="fa-solid fa-align-center"
+                                style="color: #f9b806;"></i></button>
+                        <button onclick="onAlign('right')" title='align txt right'><i class="fa-solid fa-align-right"
+                                style="color: #f5f907;"></i></button>
+                    </div>
+                    <input oninput="onFontColor(this.value)" type="color" id="fontColor" value="#ffffff"
+                        title='font color' />
+                </div>
+                <div class="btn-save margin">
+                    <h4><a href="#" onclick="onDownloadCanvas(this)"><i class="fa-solid fa-download fa-xl"></i></a></h4>
+                </div>
+                <div>
+                    <button class="btn-f" onclick="onUploadImg()"> Share on Facebook</button>
+                </div>
+                <div>
+                    <button class="btn-m" onclick="onSaveMeme()"> Save to my Meme</button>
+                </div>
+        </div>
+
         </section>
 
-        <section class="tools-container">
-            <h3> My-Tools</h3>
+    </main>
 
-            <input type="text" placeholder="write something" id="txt-input" oninput="onChangeText(this.value)">
-
-            <div class="line-container">
-                <button onclick="onAddLine()" title='plus line'>
-                    <i class="fa-solid fa-plus" style="color: #949494;"></i>
-                </button>
-                <button onclick="onDeleteLine()" title='Delate line'>
-                    <i class="fa-solid fa-trash-can" style="color: #949494;"></i>
-                </button>
-                <button onclick="onSwitchLine()" title='switch line'><i class="fa-solid fa-arrows-up-down"
-                        style="color: #949494;"></i></button>
-            </div>
-
-            <div class="font-container">
-                <button onclick="onChangeSize(5)" title='plus size'>A+</button>
-                <button onclick="onChangeSize(-5)" title='minos line'>A-</button>
-                <button onclick="onAlign('left')" title='align txt left'><i class="fa-solid fa-align-left"
-                        style="color: #949494;"></i></button>
-                <button onclick="onAlign('center')" title='align txt center'><i class="fa-solid fa-align-center"
-                        style="color: #949494;"></i></button>
-                <button onclick="onAlign('right')" title='align txt right'><i class="fa-solid fa-align-right"
-                        style="color: #949494;"></i></button>
-            </div>
-            <div class = family-container>
-                <select id="font-family" class="font-family" onchange="onFontChange(this.value)">
-                    <option value="impact">Impact</option>
-                    <option value="Segoe UI">Segoe UI</option>
-                    <option value="verdana">Verdana</option>
-                    <option value="Trebuchet MS">Trebuchet MS</option>
-                    <option value="times new roman">Times New Roman</option>
-                    <option value="comic sans ms">Comic Sans MS</option>
-                </select>
-                <input oninput="onFontColor(this.value)" type="color" id="fontColor" title='font color' />
-            </div>
-            <h4><a href="#" onclick="onDownloadCanvas(this)"><i class="fa-solid fa-download fa-xl"></i></a></h4>
-            <button class="btn" onclick="onUploadImg()"> Share on Facebook</button>
-
-
-        </section>
-
-    </div>
 
 
     <script src="js/services/utils.servise.js"></script>
+    <script src="js/services/gallery.servise.js"></script>
     <script src="js/services/meme.servise.js"></script>
     <script src="js/gallery.controller.js"></script>
     <script src="js/meme.controller.js"></script>

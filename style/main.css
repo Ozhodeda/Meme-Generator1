@@ -8,3 +8,6 @@
 @import url("components/gallery.css");
 @import url("components/canvas.css");
 @import url("components/tools.css");
+
+/* MEDIA QUERIES */
+@import url("setup/mq.css")

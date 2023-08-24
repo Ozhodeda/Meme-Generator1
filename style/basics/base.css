@@ -12,4 +12,7 @@ h3{
     font-family: inconsolata, monospace;
     text-transform: uppercase;
     color:   rgb(207, 119, 5);
+    align-self: first baseline;
+    margin-left: 40px;
+    margin-top: 30px;
 }

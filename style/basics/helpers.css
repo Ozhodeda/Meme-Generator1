@@ -23,3 +23,7 @@
 .space-around{
     justify-content: space-around;
 }
+
+.margin{
+    margin: 10px 10px 10px 10px;
+}
