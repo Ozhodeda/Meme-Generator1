@@ -1,0 +1,13 @@
+canvas {
+    border-radius: 20px;
+    width: 100%;
+    max-height: calc(100vh - 100px);
+}
+
+
+.canvas-container {
+    width: 100%;
+    max-width: 50vw;
+    max-height: calc(100vh - 100px);
+  
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/main.css">
+    <script src="https://kit.fontawesome.com/1c0cad262b.js" crossorigin="anonymous"></script>
+    <title>Meme-Generator</title>
+</head>
+
+<body onload="onInit();onInitGallery()">
+
+    <header class="main-header flex space-between align-center">
+        <div class="logo">Meme-Generator</div>
+        <nav class="main-nav-container">
+            <ul class="main-nav flex clean-list">
+                <li><a href="#" onclick="onClickGallery()">Gallery</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="main-gallery flex">
+        <h3>My-Gallery</h3>
+    </section>
+    <div class="memes-area flex space-around">
+        <section class="canvas-container">
+            <h3>My-Meme</h3>
+            <canvas width="200" height="200"></canvas>
+        </section>
+
+        <section class="tools-container">
+            <h3> My-Tools</h3>
+
+            <input type="text" placeholder="write something" id="txt-input" oninput="onChangeText(this.value)">
+
+            <div class="line-container">
+                <button onclick="onAddLine()" title='plus line'>
+                    <i class="fa-solid fa-plus" style="color: #949494;"></i>
+                </button>
+                <button onclick="onDeleteLine()" title='Delate line'>
+                    <i class="fa-solid fa-trash-can" style="color: #949494;"></i>
+                </button>
+                <button onclick="onSwitchLine()" title='switch line'><i class="fa-solid fa-arrows-up-down"
+                        style="color: #949494;"></i></button>
+            </div>
+
+            <div class="font-container">
+                <button onclick="onChangeSize(5)" title='plus size'>A+</button>
+                <button onclick="onChangeSize(-5)" title='minos line'>A-</button>
+                <button onclick="onAlign('left')" title='align txt left'><i class="fa-solid fa-align-left"
+                        style="color: #949494;"></i></button>
+                <button onclick="onAlign('center')" title='align txt center'><i class="fa-solid fa-align-center"
+                        style="color: #949494;"></i></button>
+                <button onclick="onAlign('right')" title='align txt right'><i class="fa-solid fa-align-right"
+                        style="color: #949494;"></i></button>
+            </div>
+            <div class = family-container>
+                <select id="font-family" class="font-family" onchange="onFontChange(this.value)">
+                    <option value="impact">Impact</option>
+                    <option value="Segoe UI">Segoe UI</option>
+                    <option value="verdana">Verdana</option>
+                    <option value="Trebuchet MS">Trebuchet MS</option>
+                    <option value="times new roman">Times New Roman</option>
+                    <option value="comic sans ms">Comic Sans MS</option>
+                </select>
+                <input oninput="onFontColor(this.value)" type="color" id="fontColor" title='font color' />
+            </div>
+            <h4><a href="#" onclick="onDownloadCanvas(this)"><i class="fa-solid fa-download fa-xl"></i></a></h4>
+            <button class="btn" onclick="onUploadImg()"> Share on Facebook</button>
+
+
+        </section>
+
+    </div>
+
+
+    <script src="js/services/utils.servise.js"></script>
+    <script src="js/services/meme.servise.js"></script>
+    <script src="js/gallery.controller.js"></script>
+    <script src="js/meme.controller.js"></script>
+    <script src="js/sharing-on-facebook.js"></script>
+</body>
+
+</html>
