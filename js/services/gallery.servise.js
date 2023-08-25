@@ -1,5 +1,5 @@
 'use strict'
-var gKeywords = { 'happy': 12, 'funny puk': 1 }
+
 let gCounterImages = 1
 var gImgs = [
     { id: 1, url: `meme-imgs/${gCounterImages++}.jpg`, keywords: ['funny', 'celeb'] },
@@ -25,9 +25,9 @@ var gImgs = [
     { id: 21, url: `meme-imgs/${gCounterImages++}.jpg`, keywords: [] },
 ]
 
+let gKeywords = { 'happy': 12, 'funny puk': 1 }
 
-
-function setImgFilter(filterBy = {}) {
-    if (filterBy.keywords !== undefined) gImgs.keywords = filterBy.keywords
-    return gKeywords
-}
+function getImgs() {
+    return gImgs;
+  }
+  

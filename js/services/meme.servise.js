@@ -1,6 +1,4 @@
-
-
-
+'use strict'
 var gMeme;
 
 function createMeme(imgId) {

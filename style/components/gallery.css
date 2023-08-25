@@ -27,8 +27,8 @@
   } 
 
 .gallery-header .search{
-  color: aliceblue;
-  margin-left: 20px;
+  color: rgb(0, 0, 0);
+  margin-inline-end: 20px;
   padding: 15px 35px 15px 15px;
   background-color: #f0f0f1;
   border: none;
@@ -43,7 +43,7 @@
   background: transparent;
   border: none;
   outline: none;
-  margin-left: -50px;
+  margin-inline-end: -50px;
   margin-top: 30px;
 }
 
@@ -54,7 +54,10 @@
   color: rgb(207, 119, 5);
   background-color: #f0f0f1;
   align-self: third baseline;
-  margin-left: 40px;
+  margin-inline-end: 40px;
   margin-top: 20px;
 }
 
+.lang{
+  border:none
+}

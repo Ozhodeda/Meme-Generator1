@@ -12,12 +12,12 @@
 <body onload="onInit();onInitGallery()">
 
     <header class="main-header flex space-between align-center">
-        <div class="logo">Meme-Generator</div>
+        <div class="logo" data-trans="logo">Meme-Generator</div>
         <nav class="main-nav-container">
             <ul class="main-nav flex clean-list">
-                <li><a href="#" onclick="onClickGallery()">Gallery</a></li>
-                <li><a href="#" onclick="onMyMemes()">My-Memes</a></li>
-                <li><a href="#">About</a></li>
+                <li><a data-trans="a-gallery" href="#" onclick="onClickGallery()">Gallery</a></li>
+                <li><a data-trans="a-meme" href="#" onclick="onMyMemes()">My-Memes</a></li>
+                <li><a data-trans="a-about" href="#">About</a></li>
             </ul>
         </nav>
     </header>
@@ -25,29 +25,33 @@
     <main class="main-container">
         <section class="main-gallery">
             <div class="gallery-header flex ">
-                <h3>My-Gallery</h3>
+                <h3 data-trans="h3-gallery">My-Gallery</h3>
                 <form class="form">
-                    <input type="search" placeholder="Search" class="search" list="keywordsList"
-                        oninput="onSetFilterBy({gKeywords: this.value})" />
+                    <input type="search" placeholder="Search" data-trans="search-checkbox" class="search" list="keywordsList"
+                        oninput="onSetFilterBy(this.value)" />
                     <datalist id="keywordsList" class="keywordsList"></datalist>
                     <button type="button" class="btn-search">
                         <i class="fa-solid fa-magnifying-glass fa-xl" style="color: rgb(207, 119, 5)"></i>
                     </button>
                 </form>
-                <span class="filter-words">Funny Animal Man Baby Cute Caleb</span>
+                <span class="filter-words" data-trans="span-keywords">funny serious man baby cute caleb</span>
+                <select class="lang" onchange="onSetLang(this.value)">
+                    <option value="en">English</option>
+                    <option value="he">עברית</option>
+                </select>
             </div>
-            <div class="gallery flex"></div>
+            <div class="gallery flex "></div>
         </section>
         <div class="memes-area flex space-around">
             <section class="canvas-container">
-                <h3>My-Meme</h3>
+                <h3 data-trans="h3-memes">My-Meme</h3>
                 <canvas width="200" height="200"></canvas>
             </section>
 
             <section class="tools-container">
-                <h3> My-Tools</h3>
+                <h3 data-trans="h3-tools"> My-Tools</h3>
 
-                <input type="text" placeholder="write something" id="txt-input" oninput="onChangeText(this.value)">
+                <input type="text" data-trans="input-checkbox" placeholder="write something" id="txt-input" oninput="onChangeText(this.value)">
 
                 <div class="family-container margin">
                     <select id="font-family" class="font-family" onchange="onFontChange(this.value)">
@@ -88,10 +92,10 @@
                     <h4><a href="#" onclick="onDownloadCanvas(this)"><i class="fa-solid fa-download fa-xl"></i></a></h4>
                 </div>
                 <div>
-                    <button class="btn-f" onclick="onUploadImg()"> Share on Facebook</button>
+                    <button class="btn-f" data-trans="btn-f" onclick="onUploadImg()"> Share on Facebook</button>
                 </div>
                 <div>
-                    <button class="btn-m" onclick="onSaveMeme()"> Save to my Meme</button>
+                    <button class="btn-m"data-trans="btn-s" onclick="onSaveMeme()"> Save to my Meme</button>
                 </div>
         </div>
 
@@ -104,6 +108,9 @@
     <script src="js/services/utils.servise.js"></script>
     <script src="js/services/gallery.servise.js"></script>
     <script src="js/services/meme.servise.js"></script>
+    <script src="js/services/storage.servise.js"></script>
+    <script src="js/services/i18n.service.js"></script>
+
     <script src="js/gallery.controller.js"></script>
     <script src="js/meme.controller.js"></script>
     <script src="js/sharing-on-facebook.js"></script>
